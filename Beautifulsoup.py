@@ -48,3 +48,22 @@ for item in lst:
     print(clean_item2(str(item)))
 
 
+url = "https://seaborn.pydata.org/examples/index.html"
+response = requests.get(url)
+
+soup = BeautifulSoup(response.content, 'html.parser')
+print(soup)
+
+lst = soup.find_all(class_ = 'figure-label')
+
+for item in lst:
+    print(item)
+
+def clean_item3(my_item):
+    position = my_item.find('</p')
+    return my_item[26:position]
+
+print("")
+
+for item in lst:
+    print(clean_item3(str(item)))
